@@ -8,12 +8,15 @@ Open `index.html` directly in a browser. No build step or server is required.
 
 ## Included flows
 
-- Public scholarship discovery, search, filters, categories, details, and deadline information
-- Eligibility checker using education level, field, CGPA, and family income
-- Separate student login and registration entry points
-- Student dashboard with recommendations, application statuses, and local browser persistence
-- Internal application start flow with generated application records
-- External scholarship handoff to the official provider URL
-- Separate admin login with dashboard, scholarship management, student directory, and application review queue
+- Public scholarship discovery, search, catalog details, and eligibility checker
+- Split student/admin authentication screens with client-side validation
+- Student workspace with overview metrics, searchable catalog, four-step application form, document selection, application tracker, and profile editing
+- Admin workspace with analytics, applicant search/sort/status filters, review actions, notes, document list, student directory, and scholarship add/edit/archive controls
+- Role-based route guards that prevent student access to admin surfaces and admin access to student-only application pages
+- MySQL-backed API integration through the standalone `backend/` service, with local demo data retained only as an offline fallback
 
-This is a frontend demonstration with seeded data. Authentication, file uploads, email notifications, and database persistence would be connected through a backend API in the production version.
+### Demo administrator
+
+Use `admin@scholarshiphub.test` with any password of at least eight characters.
+
+The frontend calls `http://localhost:5000/api` by default. Start the backend and XAMPP MySQL before signing in. The API uses JWT authentication and server-side role checks. File metadata is stored by the API; production file storage still needs to be added.
